@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: MysteryJokerLogo
+  m_Name: Title
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -21,50 +21,50 @@ AnimationClip:
   - curve:
     - time: 0
       value: {fileID: 21300000, guid: 51690adeebb36804abd3c8fc4dfdbb52, type: 3}
-    - time: 0.1
+    - time: 0.13333334
       value: {fileID: 21300000, guid: 1b02b4152d9e24542a880e887265c962, type: 3}
-    - time: 0.2
+    - time: 0.25
       value: {fileID: 21300000, guid: dfe0f9fb9ef68014f99e6f9a7852d5a2, type: 3}
-    - time: 0.3
+    - time: 0.38333333
       value: {fileID: 21300000, guid: a4d6eebb55e38b140be4aecaf19133cd, type: 3}
-    - time: 0.4
-      value: {fileID: 21300000, guid: e59fdc584cfb33941953f1cb06f9df03, type: 3}
     - time: 0.5
+      value: {fileID: 21300000, guid: e59fdc584cfb33941953f1cb06f9df03, type: 3}
+    - time: 0.6333333
       value: {fileID: 21300000, guid: 805057312c65b674c96ea4627bc1879f, type: 3}
-    - time: 0.6
+    - time: 0.75
       value: {fileID: 21300000, guid: bd25bf526322ae64ca416d0d175d84a2, type: 3}
-    - time: 0.7
+    - time: 0.8833333
       value: {fileID: 21300000, guid: 586c4cc84cc58ad44bb58a0ec9d29f18, type: 3}
-    - time: 0.8
-      value: {fileID: 21300000, guid: 77f8da2c18b2dae4f9cc82f57d81b441, type: 3}
-    - time: 0.9
-      value: {fileID: 21300000, guid: 43578073f3e081249a9a569e0a009017, type: 3}
     - time: 1
+      value: {fileID: 21300000, guid: 77f8da2c18b2dae4f9cc82f57d81b441, type: 3}
+    - time: 1.1333333
+      value: {fileID: 21300000, guid: 43578073f3e081249a9a569e0a009017, type: 3}
+    - time: 1.2166667
       value: {fileID: 21300000, guid: bd03b92251c75ba4a93f4ae888b07b82, type: 3}
-    - time: 1.1
+    - time: 1.35
       value: {fileID: 21300000, guid: fdacfc05c4dc5894eb128bbc13e8fc12, type: 3}
-    - time: 1.2
+    - time: 1.4833333
       value: {fileID: 21300000, guid: 6e4e6f56a67d8584591634ae5c3726d0, type: 3}
-    - time: 1.3
-      value: {fileID: 21300000, guid: a97b9fcdf5cf74045ae757dc08449280, type: 3}
-    - time: 1.4
-      value: {fileID: 21300000, guid: 710292f3fbac64a4f9a38b2296c010fc, type: 3}
-    - time: 1.5
-      value: {fileID: 21300000, guid: ab0276842c7dc884cb0da60d5b9d8e32, type: 3}
     - time: 1.6
+      value: {fileID: 21300000, guid: a97b9fcdf5cf74045ae757dc08449280, type: 3}
+    - time: 1.7333333
+      value: {fileID: 21300000, guid: 710292f3fbac64a4f9a38b2296c010fc, type: 3}
+    - time: 1.85
+      value: {fileID: 21300000, guid: ab0276842c7dc884cb0da60d5b9d8e32, type: 3}
+    - time: 1.9833333
       value: {fileID: 21300000, guid: c4439c7983bc0b24f8cde97a5fa35c00, type: 3}
-    - time: 1.7
+    - time: 2.1
       value: {fileID: 21300000, guid: ef460e2f4d16ad54fa532c4e14c03445, type: 3}
-    - time: 1.8
+    - time: 2.2333333
       value: {fileID: 21300000, guid: 1587c4cc0042b1c4e9266338339548c2, type: 3}
-    - time: 1.9
+    - time: 2.35
       value: {fileID: 21300000, guid: 3a360748bd470c949a72dd1923e06692, type: 3}
-    - time: 2
+    - time: 2.4833333
       value: {fileID: 21300000, guid: 3e83e80573cd5fe4ca862ff7712d2c8a, type: 3}
     attribute: m_Sprite
     path: 
-    classID: 212
-    script: {fileID: 0}
+    classID: 114
+    script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_SampleRate: 60
   m_WrapMode: 0
   m_Bounds:
@@ -74,10 +74,10 @@ AnimationClip:
     genericBindings:
     - serializedVersion: 2
       path: 0
-      attribute: 0
-      script: {fileID: 0}
-      typeID: 212
-      customType: 23
+      attribute: 2015549526
+      script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+      typeID: 114
+      customType: 0
       isPPtrCurve: 1
     pptrCurveMapping:
     - {fileID: 21300000, guid: 51690adeebb36804abd3c8fc4dfdbb52, type: 3}
@@ -106,7 +106,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 2.0166667
+    m_StopTime: 2.5
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0

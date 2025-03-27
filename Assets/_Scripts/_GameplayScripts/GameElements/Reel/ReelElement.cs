@@ -10,6 +10,7 @@ public class ReelElement : MonoBehaviour
     [SerializeField] private ReelElementSO reelElementSOAssetData;
     [SerializeField] private float reelScrollSpeed;
     [SerializeField] private Transform reelBottomEdgeTransform;
+    [SerializeField] private Transform reelTopEdgeTransform;
     [SerializeField] private SlotElement resultSlotElementPrefab;
 
     [Header("Reel Element Generation")]
@@ -23,6 +24,7 @@ public class ReelElement : MonoBehaviour
     private Vector3 resultHoldingSlotElementResetPosition;
     private List<SlotElement> slotElementsInReel = new List<SlotElement>();
     private List<SlotElement> applicableResultHoldingSlotElementsInReel = new List<SlotElement>();
+    private List<SlotElement> unapplicableResultHoldingSlotElementsInReel = new List<SlotElement>();
     private List<SlotElement> allResultsHoldingSlotElementsInReel= new List<SlotElement>();
     private SlotElement topSlotElementInReelView;
     private SlotElement topResultHoldingSlotElementInReelView;
@@ -68,6 +70,7 @@ public class ReelElement : MonoBehaviour
 
     void GenerateSlotElements()
     {
+        int count = 0;
         foreach (var slotElement in reelElementSOAssetData.allSlotElements)
         {
             var instantiatedSlotElement= Instantiate(slotElement, nextSlotElementInstantiationPos, Quaternion.identity);
@@ -75,6 +78,11 @@ public class ReelElement : MonoBehaviour
             slotElementsInReel.Add(instantiatedSlotElement);
             DetermineNextSlotElementTransform();
             topSlotElementInReelView = instantiatedSlotElement;
+            if (count >= 3)
+            {
+                instantiatedSlotElement.gameObject.SetActive(false);
+            }
+            count += 1;
         }
     }
 
@@ -88,6 +96,7 @@ public class ReelElement : MonoBehaviour
                 var resultHoldingSlotElement = Instantiate(resultSlotElementPrefab, nextResultSlotElementInstantiationPos, Quaternion.identity);
                 resultHoldingSlotElement.transform.parent = this.transform;
                 allResultsHoldingSlotElementsInReel.Add(resultHoldingSlotElement);
+                unapplicableResultHoldingSlotElementsInReel.Add(resultHoldingSlotElement);
                 nextResultSlotElementInstantiationPos += new Vector3(0, slotElementDimensions.y, 0) + slotElementOffset;
                 topResultHoldingSlotElementInReelView = resultHoldingSlotElement;
             }
@@ -143,11 +152,33 @@ public class ReelElement : MonoBehaviour
         {
             // slotElement.gameObject.transform.position -= new Vector3(0, reelScrollSpeed, 0);
             slotElement.gameObject.transform.localPosition -= new Vector3(0, reelScrollSpeed, 0);
+            if (slotElement.gameObject.transform.position.y + slotElementDimensions.y + slotElementOffset.y *2 
+                <= reelTopEdgeTransform.position.y)
+            {
+                //show
+                slotElement.gameObject.SetActive(true);
+            }
+            else
+            {
+                //hide
+                slotElement.gameObject.SetActive(false);
+            }
         }
 
         foreach (var resultSlotElement in allResultsHoldingSlotElementsInReel)
         {
             resultSlotElement.gameObject.transform.localPosition -= new Vector3(0, reelScrollSpeed, 0);
+            if (resultSlotElement.gameObject.transform.position.y + slotElementDimensions.y/2 
+                <= reelTopEdgeTransform.position.y)
+            {
+                //show
+                resultSlotElement.gameObject.SetActive(true);
+            }
+            else
+            {
+                //hide
+                resultSlotElement.gameObject.SetActive(false);
+            }
         }
     }
 
@@ -168,6 +199,10 @@ public class ReelElement : MonoBehaviour
         yield return new WaitUntil(
             () => allResultsHoldingSlotElementsInReel[2] == topResultHoldingSlotElementInReelView);
         this.beginScroll = false;
+        foreach (var slotElement in unapplicableResultHoldingSlotElementsInReel)
+        {
+            slotElement.gameObject.SetActive(false);
+        }
     }
 
     public List<SlotElement> GetApplicableResultSlotElements()

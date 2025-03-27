@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: QuestionBG
+  m_Name: TopLeftQuestionMark
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -21,19 +21,19 @@ AnimationClip:
   - curve:
     - time: 0
       value: {fileID: 21300000, guid: 2ace85da2e1c63940aba736ebdd07a84, type: 3}
-    - time: 0.05
+    - time: 0.06666667
       value: {fileID: 21300000, guid: d01d426898f2d7d49941e1f43adcb548, type: 3}
     - time: 0.11666667
       value: {fileID: 21300000, guid: 8107e19e8145f57419d8b81ca008d2b4, type: 3}
     - time: 0.18333334
       value: {fileID: 21300000, guid: 632a1c9958e014f47b16ed7da2e30d2c, type: 3}
-    - time: 0.23333333
+    - time: 0.21666667
       value: {fileID: 21300000, guid: 60055aa90b391b545a3fb5d3897994c0, type: 3}
     - time: 0.3
       value: {fileID: 21300000, guid: a86f9b22ba171944896a73c4532d9935, type: 3}
-    - time: 0.35
+    - time: 0.36666667
       value: {fileID: 21300000, guid: 66f42b4e4ab20ba4185a0b8aa055b10a, type: 3}
-    - time: 0.4
+    - time: 0.41666666
       value: {fileID: 21300000, guid: 84bb17e2dbcab42408efad5c74d7c1bc, type: 3}
     - time: 0.46666667
       value: {fileID: 21300000, guid: e8e4cf5fed68fcf47ba5755ad5397c53, type: 3}
@@ -43,8 +43,8 @@ AnimationClip:
       value: {fileID: 21300000, guid: 1dd99c34f4ee2bd4a89b96dc32534a00, type: 3}
     attribute: m_Sprite
     path: 
-    classID: 212
-    script: {fileID: 0}
+    classID: 114
+    script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_SampleRate: 60
   m_WrapMode: 0
   m_Bounds:
@@ -54,10 +54,10 @@ AnimationClip:
     genericBindings:
     - serializedVersion: 2
       path: 0
-      attribute: 0
-      script: {fileID: 0}
-      typeID: 212
-      customType: 23
+      attribute: 2015549526
+      script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+      typeID: 114
+      customType: 0
       isPPtrCurve: 1
     pptrCurveMapping:
     - {fileID: 21300000, guid: 2ace85da2e1c63940aba736ebdd07a84, type: 3}

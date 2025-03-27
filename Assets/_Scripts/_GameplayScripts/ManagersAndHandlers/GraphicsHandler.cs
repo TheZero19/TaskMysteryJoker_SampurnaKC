@@ -6,6 +6,9 @@ using UnityEngine;
 public class GraphicsHandler : MonoBehaviour
 {
     [SerializeField] private List<GameObject> winLines;
+    [SerializeField] private Transform winLinesParentTransform;
+    [Header("For finding the proper position of lines, Any one reel element will be good enough.")]
+    [SerializeField] private ReelElement reelElement;
     void Start()
     {
         GameManager.OnSpinStarted += OnSpinStarted;
@@ -20,6 +23,9 @@ public class GraphicsHandler : MonoBehaviour
     
     private void OnSpinStopped()
     {
+        var applicableResultSlotElements= reelElement.GetApplicableResultSlotElements();
+        winLinesParentTransform.position = new Vector3(winLinesParentTransform.position.x, applicableResultSlotElements[1].transform.position.y, 
+            winLinesParentTransform.position.z);
         DetermineActiveWinLines();
     }
 

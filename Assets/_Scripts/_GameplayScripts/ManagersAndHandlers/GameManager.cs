@@ -17,16 +17,29 @@ public class GameManager : MonoBehaviour
     public static float CurrentBetAmount;
     public static Action OnSpinStarted;
     public static Action OnSpinStopped;
+    public static Action OnGameManagerLoaded;
     public static bool IsCurrentSpinAWin;
     public static List<List<int>> CurrentOutcome;
     public static int NumberOfTrios;
     public static List<bool> ActiveWinLines;
     public static float CurrencyAmount;
+    public static float CurrentSpinWinAmount;
+
+    public static GameManager Singleton;
     
+    private Coroutine _spinCoroutine;
+    
+
     Random rnd = new Random();
+
+    private void Awake()
+    {
+        if(Singleton == null)Singleton = this;
+    }
     void Start()
     {
        LoadCurrencyAmount();
+       OnGameManagerLoaded?.Invoke();
     }
 
     void Update()
@@ -61,17 +74,22 @@ public class GameManager : MonoBehaviour
 
     public void StartSpin()
     {
-        if (CurrencyAmount >= CurrentBetAmount)
+        if (CurrencyAmount >= CurrentBetAmount && CurrentBetAmount > 0f)
         {
-            StartCoroutine(StartSpinCoroutine());
+            if (_spinCoroutine == null)
+            {
+                _spinCoroutine = StartCoroutine(StartSpinCoroutine());
+            }
         }
     }
-    private void StopSpin()
+    public void StopSpin()
     {
-        StartCoroutine(StopSpinCoroutine());
+        if(_spinCoroutine != null) StopCoroutine(_spinCoroutine);
+        _spinCoroutine = StartCoroutine(StopSpinCoroutine());
     }
     private IEnumerator StartSpinCoroutine()
     {
+        GameManager_OnSpinStarted();
         _isSpinning = true;
         foreach (ReelElement reelElement in allReelElements)
         {
@@ -100,8 +118,17 @@ public class GameManager : MonoBehaviour
         GameManager_OnSpinStopped();
         Debug.Log("Before SpinStopped Public event is called: " + ActiveWinLines[0] + ", " + ActiveWinLines[1] + ", " + ActiveWinLines[2] + ", " + ActiveWinLines[3] + ", " + ActiveWinLines[4]);
         OnSpinStopped?.Invoke();
+        _spinCoroutine = null;
     }
 
+    private void GameManager_OnSpinStarted()
+    {
+        //Reset all values
+        IsCurrentSpinAWin = false;
+        NumberOfTrios = 0;
+        CurrentSpinWinAmount = 0;
+        CurrencyHandler.OnCurrencyChanged?.Invoke();
+    }
     private void GameManager_OnSpinStopped()
     {
         DetermineTriosInCurrentSpin();

@@ -20,5 +20,7 @@ public class BetButton : MonoBehaviour
         GameManager.CurrentBetAmount = betAmount;
         buttonComponent.interactable = false;
         Debug.Log($"Bet Amount {GameManager.CurrentBetAmount}");
+        ButtonsHandler.Singleton.OnOneOfTheBetButtonsClicked_ChangeUI(this.gameObject.GetComponent<Button>());
+        ButtonsHandler.OnBetChanged?.Invoke();
     }
 }
